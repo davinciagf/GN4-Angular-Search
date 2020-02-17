@@ -1,0 +1,19 @@
+<div class="no-data text-center" *ngIf="metadata.searchResult == 0">
+  <p>There is no result added yet!</p>
+</div>
+
+<div *ngFor="let metadataResult of metadata | async">
+  Number of results :{{ metadataResult.hits.total['value'] }}
+</div>
+
+<div *ngFor="let metadataResult of metadata | async">
+  <div *ngFor="let hit of metadataResult.hits.hits">
+    {{hit._source.resourceTitle}}
+    <br>
+    {{hit.abstract}}
+    <br>
+    <br>
+  </div>
+</div>
+
+

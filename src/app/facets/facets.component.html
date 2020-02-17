@@ -1,0 +1,18 @@
+<div *ngFor="let index of dimension | async">
+  <div *ngFor="let groupfield of index.aggregations | keyvalue">
+    <strong>{{groupfield.key}}</strong>
+    <div *ngIf="groupfield.value.buckets">
+      <br>
+      <div *ngFor="let field of groupfield.value.buckets">
+        <span *ngIf="field.doc_count > 0">
+          <mat-checkbox class="example-margin" [checked]="isChecked(groupfield.key, field['key'],index.paramsRequest)"
+                        (change)="onChangeFacet($event)" [value]="groupfield['key'] +':'+ field['key']"></mat-checkbox>
+          <span *ngIf="field.key_as_string"> {{field.key_as_string}} ({{field.doc_count}})</span>
+          <span *ngIf="!field.key_as_string"> {{field.key}} ({{field.doc_count}})</span>
+        </span>
+      </div>
+    </div>
+    <span *ngIf="groupfield.value.sum_other_doc_count && groupfield.value.sum_other_doc_count > 0"><a (click)="loadMoreFacetResult(groupfield.key,groupfield.value.buckets.length)">loadMoreResult</a><br></span>
+    <br>
+  </div>
+</div>

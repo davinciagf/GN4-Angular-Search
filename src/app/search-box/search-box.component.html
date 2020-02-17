@@ -1,0 +1,11 @@
+<form [formGroup]="searchBox" (ngSubmit)="search(searchBox.value)">
+  <mat-form-field>
+    <input matInput placeholder="anytext" type="text" formControlName="anyText">
+  </mat-form-field>
+  <div class="col-lg-offset-10">
+    <button mat-raised-button color="primary">search</button>
+    <button mat-icon-button color="primary" (click)="searchTextRemove()"><mat-icon>close</mat-icon></button>
+    <button mat-icon-button color="primary" (click)="searchReset()"><mat-icon>delete</mat-icon></button>
+  </div>
+</form>
+

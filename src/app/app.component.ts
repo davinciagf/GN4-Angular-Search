@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'gn-search-client-app';
+  title = 'GeoNetwork (v4.0.0) discovers Angular.io (v8)';
 }
