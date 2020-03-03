@@ -1,18 +1,109 @@
+<!--div>
+  <mat-list>
+    <mat-list-item>
+      <h3 class="numberOfResult-element">Result</h3>
+      <mat-chip-list >
+        <mat-chip color="primary" selected>
+          <mat-icon>insert_drive_file</mat-icon>
+          <span *ngFor="let metadataResult of metadata | async">{{ metadataResult.hits.total['value'] }}</span>
+        </mat-chip>
+      </mat-chip-list>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div-->
+<div>
+  <mat-list>
+
+      <div class="container"
+           fxLayout
+           fxLayout.xs="column"
+           fxLayoutAlign="center"
+           fxLayoutGap="20px"
+           fxLayoutGap.xs="0">
+        <div class="item item-1 container-element"
+             fxFlex="50%">
+          <mat-list-item>
+          <h3 class="numberOfResult-element">Result</h3>
+          <mat-chip-list>
+            <mat-chip color="primary" selected>
+              <mat-icon>insert_drive_file</mat-icon>
+              <span *ngFor="let metadataResult of metadata | async">{{ metadataResult.hits.total['value'] }}</span>
+            </mat-chip>
+          </mat-chip-list>
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>check_box</mat-icon>
+                <span (click)="selectAllInPage()">selectAllInPage</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>library_add_check</mat-icon>
+                <span (click)="selectAll()">selectAll</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>check_box_outline_blank</mat-icon>
+                <span (click)="unSelectAll()">unSelectAll</span>
+              </button>
+            </mat-menu>
+          </mat-list-item>
+        </div>
+        <div class="item item-2 test"
+
+             fxFlex>
+          <app-sort-box></app-sort-box>
+        </div>
+      </div>
+
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>
+
+
+<app-pagination></app-pagination>
+
 <div class="no-data text-center" *ngIf="metadata.searchResult == 0">
   <p>There is no result added yet!</p>
 </div>
 
-<div *ngFor="let metadataResult of metadata | async">
-  Number of results :{{ metadataResult.hits.total['value'] }}
-</div>
-
-<div *ngFor="let metadataResult of metadata | async">
+<div class="container" *ngFor="let metadataResult of metadata | async">
   <div *ngFor="let hit of metadataResult.hits.hits">
-    {{hit._source.resourceTitle}}
     <br>
-    {{hit.abstract}}
-    <br>
-    <br>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <!--input name="hit._source.resourceTitle" type="checkbox" [(ngModel)]="value" /-->
+        <input type="checkbox"
+               (change)="onChange($event.target.checked, hit._source.resourceTitle)"
+               [checked]="checked(hit._source.resourceTitle)"/>
+        <mat-card-title>{{hit._source.resourceTitle}}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="container"
+             fxLayout
+             fxLayout.xs="column"
+             fxLayoutAlign="center"
+             fxLayoutGap="20px"
+             fxLayoutGap.xs="0">
+          <div class="item item-1 container-element"
+               fxFlex="20%">
+            <img *ngIf="hit._source.overview" src="{{hit._source.overview.url}}">
+            <img *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png">
+          </div>
+          <div class="item item-2"
+               fxFlex>
+            <p>
+              {{hit._source.resourceAbstract}}
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>Action</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
 
