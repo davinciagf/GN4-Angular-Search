@@ -157,6 +157,19 @@ export class ParamRequestService {
     })
   }
 
+  sortSearch(sortParam){
+    this.paramRequest.subscribe((data: {}) => {
+      data[0].sort=sortParam;
+    })
+  }
+
+  updatedSortSearch(sortby){
+    this.paramRequest.subscribe((data: {}) => {
+      console.log(data[0]);
+      data[0]['sort']=sortby;
+    })
+  }
+
   updatedSearchParam(queryParam){
     this.paramRequest.subscribe((data: {}) => {
       if (data[0].query.bool.must){

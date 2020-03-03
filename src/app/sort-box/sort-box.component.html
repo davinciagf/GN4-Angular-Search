@@ -1,0 +1,11 @@
+<form [formGroup]="sortFormBox">
+<mat-form-field >
+  <mat-label>sortResult</mat-label>
+  <mat-select formControlName="sortField" [(ngModel)]="sortSelect">
+    <mat-option *ngFor="let elem of uiParamters_sortbyValues" [value]="elem.sortBy" (click)="sort(elem.sortBy,elem.sortOrder)">
+      {{ elem.sortBy }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+

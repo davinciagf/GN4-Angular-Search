@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
   MatAutocompleteModule,
+  MatBadgeModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
@@ -24,6 +25,7 @@ import {
   MatDatepickerModule,
   MatDialogModule,
   MatExpansionModule,
+  MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
@@ -46,10 +48,12 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
+import { SortBoxComponent } from './sort-box/sort-box.component';
 
 @NgModule({
   exports: [
     MatAutocompleteModule,
+    MatBadgeModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -58,6 +62,7 @@ import {
     MatDatepickerModule,
     MatDialogModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
     MatInputModule,
@@ -91,7 +96,8 @@ export class AngularMaterialModule {}
     FacetsComponent,
     ResultviewComponent,
     SearchBoxComponent,
-    PaginationComponent
+    PaginationComponent,
+    SortBoxComponent
   ],
   imports: [
     BrowserModule,
