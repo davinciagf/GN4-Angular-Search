@@ -1,6 +1,30 @@
-<h1>{{title}}</h1>
-<app-facets></app-facets>
-<app-search-box></app-search-box>
-<app-resultview></app-resultview>
-<app-pagination></app-pagination>
+<div class="main-container">
+<div fxLayout="row"
+     fxLayoutAlign="center"
+     fxLayoutGap="20px">
+  <h1>{{title}}</h1>
+</div>
 
+<div fxLayout="row"
+     fxLayoutAlign="center"
+     fxLayoutGap="20px">
+  <app-search-box></app-search-box>
+</div>
+
+<div class="container"
+     fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="20px"
+     fxLayoutGap.xs="0">
+  <div class="item item-1 container-element"
+       fxFlex="20%">
+    <app-facets></app-facets>
+  </div>
+  <div class="item item-2"
+       fxFlex>
+    <app-resultview></app-resultview>
+    <app-pagination></app-pagination>
+  </div>
+</div>
+</div>
