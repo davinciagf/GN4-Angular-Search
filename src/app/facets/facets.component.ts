@@ -5,6 +5,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {ParamRequestService} from "../param-request.service";
 import * as _ from 'lodash';
 import {UploadFacetService} from "../upload-facet.service";
+import {UiParamService} from "../ui-param.service";
 
 @Pipe({name: 'keys'})
 export class KeysPipe implements PipeTransform {
@@ -28,12 +29,19 @@ export class FacetsComponent implements OnInit {
   paramRequest: Observable<any[]>;
   facetForm:FormGroup;
   facetList: Object = {};
+  uiParamters_facetConfig:Object = {};
 
   constructor(private searchRequestService: SearchRequestService,
               private paramRequestService: ParamRequestService,
-              private uploadFacetService: UploadFacetService) { }
+              private uploadFacetService: UploadFacetService,
+              private uiParamService:UiParamService) { }
 
   ngOnInit() {
+    this.uiParamService.getUIParam()
+      .subscribe(resp => {
+        this.uiParamters_facetConfig = JSON.parse(resp.configuration).mods.search.facetConfig;
+        console.log(this.uiParamters_facetConfig);
+      });
     this.paramRequest = this.paramRequestService.paramRequest;
     this.dimension = this.searchRequestService.dimension;
     this.facetForm = new FormGroup({

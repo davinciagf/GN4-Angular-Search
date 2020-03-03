@@ -1,7 +1,8 @@
 <mat-paginator [length]="length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="pageSizeOptions"
-               (page)="onPageChanged($event)">
+               [pageSize]="uiParamters_paginationInfo"
+               [pageSizeOptions]="uiParamters_hitsperpageValues"
+               (page)="onPageChanged($event)"
+                class="container">
 </mat-paginator>
 
 
