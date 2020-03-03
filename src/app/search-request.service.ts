@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 })
 
 export class SearchRequestService {
-  baseUrl1:string = '/geonetwork/srv/api/search/records/_search?bucket=s101';
+  baseUrl:string = '/geonetwork/srv/api/search/records/_search?bucket=s101';
   private _metadata = new BehaviorSubject<any[]>([]);
   private mtdStore: { searchResult: any[] } = { searchResult: [] };
   readonly metadata = this._metadata.asObservable();
@@ -33,7 +33,7 @@ export class SearchRequestService {
     let options = {
       headers: this.httpHeaders
     };
-    this.http.post<any>(`${this.baseUrl1}`, this.params, options).subscribe(data => {
+    this.http.post<any>(`${this.baseUrl}`, this.params, options).subscribe(data => {
       let aggregations={};
       let elem ={};
       _.forEach(data.aggregations, function(value, key) {
