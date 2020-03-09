@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchRequestService} from "../search-request.service";
-import {ParamRequestService} from "../param-request.service";
+import {SearchRequestService} from "../../services/search-request.service";
+import {ParamRequestService} from "../../services/param-request.service";
 import {Observable} from "rxjs";
-import {UiParamService} from "../ui-param.service";
+import {UiParamService} from "../../services/ui-param.service";
 
 @Component({
   selector: 'app-pagination',

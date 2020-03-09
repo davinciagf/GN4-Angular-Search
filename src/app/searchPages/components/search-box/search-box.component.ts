@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
-import { ParamRequestService } from '../param-request.service';
-import { SearchRequestService } from "../search-request.service";
+import { ParamRequestService } from '../../services/param-request.service';
+import { SearchRequestService } from "../../services/search-request.service";
 
 export class searchElement {
   constructor(

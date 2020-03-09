@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchRequestService} from "../search-request.service";
-import {ParamRequestService} from "../param-request.service";
-import {UiParamService} from "../ui-param.service";
+import {SearchRequestService} from "../../services/search-request.service";
+import {ParamRequestService} from "../../services/param-request.service";
+import {UiParamService} from "../../services/ui-param.service";
 import { FormControl, FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 
@@ -58,8 +58,9 @@ export class SortBoxComponent implements OnInit {
     //console.log(sortOrder)
     let sortParameter={};
     sortParameter[sortby]="asc"
-    let sort =["_score"];
-    sort.push(sortParameter)
+    let sort =[];
+    sort.push(sortParameter);
+    sort.push("_score");
     this.paramRequestService.updatedSortSearch(sort);
     this.searchRequestService.loadAll();
   }

@@ -5,109 +5,30 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ResultviewComponent } from './resultview/resultview.component';
-import { SearchBoxComponent } from './search-box/search-box.component';
-import { FacetsComponent } from './facets/facets.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PaginationComponent } from './pagination/pagination.component';
 
-import {MatPaginatorModule} from '@angular/material/paginator';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import {
-  MatAutocompleteModule,
-  MatBadgeModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule
-} from '@angular/material';
-import { SortBoxComponent } from './sort-box/sort-box.component';
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {SearchModule} from './searchPages/search.module';
+import {AngularMaterialModule} from "./material.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
-@NgModule({
-  exports: [
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatStepperModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule
-  ],
-  declarations: []
-})
-export class AngularMaterialModule {}
 
 @NgModule({
   declarations: [
     AppComponent,
-    FacetsComponent,
-    ResultviewComponent,
-    SearchBoxComponent,
-    PaginationComponent,
-    SortBoxComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AngularMaterialModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularMaterialModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SearchModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

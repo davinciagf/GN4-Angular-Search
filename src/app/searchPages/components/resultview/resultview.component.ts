@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchRequestService } from '../search-request.service';
+import { SearchRequestService } from '../../services/search-request.service';
 import { Observable } from 'rxjs';
 
 @Component({

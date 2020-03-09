@@ -11,7 +11,7 @@ export class UiParamService {
 
   constructor(private http: HttpClient) { }
 
-  getUIParam (): Observable<any[]> {
+  getUIParam (): Observable<any> {
     return this.http.get<any[]>(this.baseUrl)
   }
 }

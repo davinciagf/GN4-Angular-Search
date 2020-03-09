@@ -1,11 +1,11 @@
 import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {Observable} from "rxjs";
-import {SearchRequestService} from "../search-request.service";
+import {SearchRequestService} from "../../services/search-request.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {ParamRequestService} from "../param-request.service";
+import {ParamRequestService} from "../../services/param-request.service";
 import * as _ from 'lodash';
-import {UploadFacetService} from "../upload-facet.service";
-import {UiParamService} from "../ui-param.service";
+import {UploadFacetService} from "../../services/upload-facet.service";
+import {UiParamService} from "../../services/ui-param.service";
 
 @Pipe({name: 'keys'})
 export class KeysPipe implements PipeTransform {
