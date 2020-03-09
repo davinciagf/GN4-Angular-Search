@@ -56,4 +56,39 @@ export class SearchRequestService {
       this._dimension.next(Object.assign({}, this.dimensionStore).searchResult);
     }, error => console.log(error, 'Could not load metadata.'));
   }
+
+  //TODO: improve management of loadAll and loadQuickResult function
+
+  loadQuickResult(sort, size) {
+    this.paramRequestService.getParamsQuickResult(sort, size)
+    this.paramRequestService.paramRequest.subscribe(data => {
+      this.params= data[0];
+    });
+    this.httpHeaders.append("Authorization", "Basic " + btoa("admin:admin"));
+    let options = {
+      headers: this.httpHeaders
+    };
+    this.http.post<any>(`${this.baseUrl}`, this.params, options).subscribe(data => {
+      let aggregations={};
+      let elem ={};
+      _.forEach(data.aggregations, function(value, key) {
+        if (Array.isArray(value.buckets) === false){
+          const result = _.map(value.buckets, (elem, key) => ({ 'key':key , 'doc_count':elem.doc_count}));
+          let bucket ={};
+          bucket['buckets'] = result;
+          elem[key] = bucket;
+        } else if (value.buckets.length>0) {
+          elem[key] = value;
+        } else{}
+      });
+      aggregations['aggregations']=elem;
+      aggregations['paramsRequest']=this.params;
+      this.mtdStore.searchResult = [];
+      this.dimensionStore.searchResult = [];
+      this.mtdStore.searchResult.push(data);
+      this.dimensionStore.searchResult.push(aggregations);
+      this._metadata.next(Object.assign({}, this.mtdStore).searchResult);
+      this._dimension.next(Object.assign({}, this.dimensionStore).searchResult);
+    }, error => console.log(error, 'Could not load metadata.'));
+  }
 }

@@ -34,15 +34,15 @@ export class ResultviewComponent implements OnInit {
   }
 
   selectAll(){
-    //TO DO selectALL
+    //TODO selectALL
 
   }
 
   selectAllInPage(){
-    //TO DO selectALL
+    //TODO selectALL
   }
 
   unselectAll(){
-    //TO DO unselectAll
+    //TODO unselectAll
   }
 }

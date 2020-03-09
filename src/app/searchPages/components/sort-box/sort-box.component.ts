@@ -34,7 +34,7 @@ export class SortBoxComponent implements OnInit {
             this.requestParameters=data;
             if(data[0]){
               this.sortParameters = data[0].sort;
-              //TO DO - QUESTION - '_score' with sortby ==> equivalent to sortby=revelance???
+              //TODO - QUESTION - '_score' with sortby ==> equivalent to sortby=revelance???
               console.log(this.sortParameters);
               if (data[0].sort.length === 1 && data[0].sort[0] ==='_score'){
                 this.sortSelect=this.uiParamters_sortbyValues[0].sortBy;
@@ -54,7 +54,7 @@ export class SortBoxComponent implements OnInit {
   }
 
   sort(sortby,sortOrder) {
-    //TO DO - QUID sortOrder reverse???
+    //TODO - QUID sortOrder reverse???
     //console.log(sortOrder)
     let sortParameter={};
     sortParameter[sortby]="asc"
