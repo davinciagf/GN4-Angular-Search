@@ -1,34 +1,25 @@
-<div class="example-button-row">
+<!--div class="example-button-row">
   <button *ngFor="let elem of searchButton" color="primary" (click)="changeResult(elem.sort, elem.size)">{{elem.name}}
   </button>
-</div>
-<div class="container" *ngFor="let metadataResult of metadata | async">
-  <div *ngFor="let hit of metadataResult.hits.hits">
-    <br>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <!--input name="hit._source.resourceTitleObject.default" type="checkbox" [(ngModel)]="value" /-->
-        <mat-card-title>{{hit._source.resourceTitle}}</mat-card-title>
-        <mat-card-subtitle></mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="container"
-             fxLayout
-             fxLayout.xs="column"
-             fxLayoutAlign="center"
-             fxLayoutGap="20px"
-             fxLayoutGap.xs="0">
-          <div class="item item-1 container-element"
-               fxFlex="20%">
-            <img *ngIf="hit._source.overview" src="{{hit._source.overview.url}}" style="max-width: 100%;">
-            <img *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png"
-                 style="max-width: 100%;">
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+</div-->
+
+<mat-tab-group>
+  <mat-tab *ngFor="let elem of searchButton" color="primary" (selectedTabChange)="changeResult(elem.sort, elem.size)" label="{{elem.name}}">
+    <div class="container" style="padding-top: 10px;" *ngFor="let metadataResult of metadata | async">
+      <div fxLayout="row" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="2.5%" fxLayoutAlign="center">
+        <mat-card class="card-picture" *ngFor="let hit of metadataResult.hits.hits">
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <span fxFlex="100%">{{hit._source.resourceTitle}}</span>
+          </mat-card-title>
+          <img mat-card-image *ngIf="hit._source.overview" src="{{hit._source.overview.url}}" style="max-width: 100%;">
+          <img mat-card-image *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png"
+               style="max-width: 100%;">
+        </mat-card>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
 
 
 
