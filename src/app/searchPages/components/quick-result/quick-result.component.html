@@ -9,11 +9,11 @@
       <div fxLayout="row" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="2.5%" fxLayoutAlign="center">
         <mat-card class="card-picture" *ngFor="let hit of metadataResult.hits.hits">
           <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
-            <span fxFlex="100%">{{hit._source.resourceTitle}}</span>
+            <span fxFlex="100%" *ngIf="hit._source.resourceTitleObject">{{hit._source.resourceTitleObject.default}}</span>
+            <span fxFlex="100%" *ngIf="!hit._source.resourceTitleObject">{{hit._source.resourceTitle}}</span>
           </mat-card-title>
-          <img mat-card-image *ngIf="hit._source.overview" src="{{hit._source.overview.url}}" style="max-width: 100%;">
-          <img mat-card-image *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png"
-               style="max-width: 100%;">
+          <img mat-card-image *ngIf="hit._source.overview" src="{{hit._source.overview.url}}">
+          <img mat-card-image *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png">
         </mat-card>
       </div>
     </div>
