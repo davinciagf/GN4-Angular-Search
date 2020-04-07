@@ -89,8 +89,8 @@
              fxLayoutGap.xs="0">
           <div class="item item-1 container-element"
                fxFlex="20%">
-            <img *ngIf="hit._source.overview" src="{{hit._source.overview.url}}">
-            <img *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png">
+            <img *ngIf="hit._source.overview" src="{{hit._source.overview.url}}" style="max-width: 100%;">
+            <img *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png" style="max-width: 100%;">
           </div>
           <div class="item item-2"
                fxFlex>
