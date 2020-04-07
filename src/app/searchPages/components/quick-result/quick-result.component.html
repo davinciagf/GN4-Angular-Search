@@ -1,32 +1,34 @@
 <div class="example-button-row">
-  <button *ngFor="let elem of searchButton" color="primary" (click)="changeResult(elem.sort, elem.size)">{{elem.name}}</button>
+  <button *ngFor="let elem of searchButton" color="primary" (click)="changeResult(elem.sort, elem.size)">{{elem.name}}
+  </button>
 </div>
-    <div class="container" *ngFor="let metadataResult of metadata | async">
+<div class="container" *ngFor="let metadataResult of metadata | async">
+  <div *ngFor="let hit of metadataResult.hits.hits">
+    <br>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <!--input name="hit._source.resourceTitleObject.default" type="checkbox" [(ngModel)]="value" /-->
+        <mat-card-title>{{hit._source.resourceTitle}}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="container"
+             fxLayout
+             fxLayout.xs="column"
+             fxLayoutAlign="center"
+             fxLayoutGap="20px"
+             fxLayoutGap.xs="0">
+          <div class="item item-1 container-element"
+               fxFlex="20%">
+            <img *ngIf="hit._source.overview" src="{{hit._source.overview.url}}" style="max-width: 100%;">
+            <img *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png"
+                 style="max-width: 100%;">
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
 
-      <div *ngFor="let hit of metadataResult.hits.hits">
-        <br>
-        <mat-card class="example-card">
-          <mat-card-header>
-            <!--input name="hit._source.resourceTitleObject.default" type="checkbox" [(ngModel)]="value" /-->
-            <mat-card-title>{{hit._source.resourceTitleObject.default}}</mat-card-title>
-            <mat-card-subtitle></mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="container"
-                 fxLayout
-                 fxLayout.xs="column"
-                 fxLayoutAlign="center"
-                 fxLayoutGap="20px"
-                 fxLayoutGap.xs="0">
-              <div class="item item-1 container-element"
-                   fxFlex="20%">
-                <img *ngIf="hit._source.overview" src="{{hit._source.overview.url}}">
-                <img *ngIf="!hit._source.overview" src="/geonetwork/catalog/views/default/images/no-thumbnail.png">
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
 
 
