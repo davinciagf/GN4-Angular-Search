@@ -1,10 +1,22 @@
 <div class="main-container">
-  <h1>Navbar</h1>
-  <nav>
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/search" routerLinkActive="active">Search</a>
-  </nav>
-  <router-outlet></router-outlet>
+  <!-- TODO - move navbar to a specific component -->
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1 style="color: whitesmoke;">GeoNetwork searching app - demo</h1>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <h3 style="color: whitesmoke;">Search tools</h3>
+      <span style="background-color: whitesmoke;" class="menu-spacer"></span>
+      <div>
+        <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+        <a mat-button routerLink="/search" routerLinkActive="active">Search</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="container" style="padding: 0 15px 0 15px;">
+    <router-outlet></router-outlet>
+  </div>
+
 <!--div fxLayout="row"
      fxLayoutAlign="center"
      fxLayoutGap="20px">
